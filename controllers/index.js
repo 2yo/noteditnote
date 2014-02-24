@@ -11,25 +11,14 @@ module.exports = function (app) {
 	var collections = ["mails", "posts"]
 	var db = require("mongojs").connect(databaseUrl, collections);
 
-
-
+    app.get('/', function(req, res) {
         db.posts.find({}, function (err, posts) {
-            if (err || !posts) {
-                console.log("error posts");
+            console.log(posts);
+            if (err) {
+                throw "error raised: " + err;
             }
-            var model =
-            {
-                posts: [
-			        {id: 'x', text: "x", name: 'x', time: 'x' },
-			        {id: 'x', text: "x", name: 'x', time: 'x' }
-			      ]
-      //posts
-            };
-            res.render('index', model);
+            res.render('index', { posts: posts });
         });
-
     });
-
-
 
 };
