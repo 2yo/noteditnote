@@ -1,0 +1,103 @@
+* {margin: 0; padding: 0;} 
+body, html {height: 100%;}
+body {font-family: Arial; color: #252525;}
+
+h1 {text-align: center; font: 50px/80px Arial; padding: 30px 0 10px;}
+
+
+
+
+#subscribe {
+	width: 700px; 
+	margin: 0 auto; 
+	padding: 20px 15px;
+	background: #eee;
+	position: relative;
+	transition:all .5s; z-index: 10;
+}
+#subscribe h3 {
+	font: 18px/30px Arial;
+	padding-bottom: 25px;
+	text-align: center;
+	position: absolute;
+	top: -30px;
+	right: 0;
+	transition:all .5s;
+}
+#subscribe input {
+	height: 50px;
+	font-size: 30px;
+	width: 100%;
+	text-align: center;
+	transition:all .5s;
+}
+#subscribe.ready {background: #90EE90}
+#subscribe.ready:after {
+	content: '...oh, click me';
+	position: absolute;
+	color: #777;
+	font-size: 18px;
+	top: 47px;
+	right: 24px;
+}
+.s {background: url(../img/bg.jpg); background-size: cover;}
+.s #perception_stream {opacity: 0.2;}
+.s #subscribe.ready:after {content: '...and press enter';}
+.s #subscribe h3 {top: -5px; right: 15px; font-size: 10px}
+#subscribe.hide {width: 0px; padding: 20px 0; overflow: hidden;}
+#subscribe.hide h3 {display: none;}
+#subscribe.hide:after {display: none;}
+#thanks {position: absolute; top: 155px; left: 50%; margin-left: -170px;}
+
+#subscribe input::-ms-clear {
+	display: none;
+}
+
+
+#perception_stream {
+	padding: 20px;
+	width: 730px; 
+	margin: 0 auto;
+	transition:all 1.5s;
+}
+
+
+.post {
+	border-bottom: 1px solid #ccc;
+	padding: 10px;
+	font-size: 16px;
+	position: relative;
+}
+.post:after {content: ''; clear: both; display: block;}
+.time {
+	position: absolute; right: 740px; font-size: 12px; color: #888; white-space: nowrap;
+}
+
+#input {
+	border: none;
+	font: 16px Arial;
+	background: none;
+	width: 15px;
+	outline: none;
+}
+.moz #input {
+	position: relative;
+	left: -1px;
+}
+
+
+.author {float: right;}
+.author:before {content: '— ';}
+
+.online {background: #ffc}
+
+
+#online {
+	position: absolute;
+	bottom: 15px;
+	right: 15px;
+	text-align: center;
+	line-height: 30px;
+}
+
+#end {display: none;}
