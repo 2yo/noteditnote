@@ -40,6 +40,7 @@ if (require.main === module) {
       }
 
       var io = require('socket.io').listen(server);
+      io.set('log level', 1)
       var online = 0
       
 
@@ -51,19 +52,20 @@ if (require.main === module) {
         socket.on('contine', function(data) {
           if(data.length > 12) {
             socket.emit('bum');
+            db.posts.remove({id: ID});
           } else {
             var date = new Date().getTime()
             socket.broadcast.emit('contine', { text: data, id: ID, time: date });
 
             db.posts.findOne({id: ID}, function(err, posts) {
               if( err || !posts) {
-                db.posts.save({text: data, name: 'anonim', time: date, id: ID}, function(err, saved) {
+                db.posts.save({text: data.replace('¶','<br>'), name: 'anonim', time: date, id: ID}, function(err, saved) {
                   if( err || !saved ) console.log("post save error");
                 });
               }
 
             else {
-               db.posts.update({id: ID}, {$set: {text: posts.text+data}}, function(err, saved) {
+               db.posts.update({id: ID}, {$set: {text: posts.text+data.replace('¶','<br>')}}, function(err, saved) {
                   if( err || !saved ) console.log("post update error");
                 });
              }

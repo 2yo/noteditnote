@@ -3,7 +3,7 @@
 $(document).ready(function(){
 
 var body = $('#wrapper')
-// мой любимый браузер, но реально не знаю как по другому сделать, странный однопиксельный отступ для текста у input
+// странный однопиксельный отступ для текста у input
 if (navigator.userAgent.search(/Firefox/) > -1) body.addClass('moz')
 
 
@@ -26,7 +26,7 @@ function testmail(){
         subscribe.removeClass('ready')
     )
 }
-setInterval(testmail, 200) 
+//ок, я не буду этого делать
 
 // отправляем мыло
 subscribe.on('submit', function(){
@@ -40,7 +40,7 @@ subscribe.on('submit', function(){
 
 // успешно
 socket.on('mail_save', function () {
-    body.removeClass('s')
+    body.removeClass('mailived')
     subscribe.addClass('hide')
 });
 
@@ -75,9 +75,10 @@ input.focus().on('keydown', function(e){
     } else{return false} flag++
 }).on('keyup', function(){flag = 0});
 
+// делам клик на боди
 body.on('click', function(){
+    body.removeClass('.mailived')
     input.focus()
-    body.removeClass('s')
 });
 
 function sendtext(){
@@ -99,7 +100,6 @@ setInterval(sendtext, 1000)
 socket.on('contine', function (data) {
     var id = data.id
     var text = data.text.length;
-    var i = text
     if(!document.getElementById(id)) {
         $("<div></div>").addClass('post online').attr('id', id)
         .html('<div class="time">'+data.time+'</div><span class="text"></span><span class="author">anonim</span>')
@@ -108,17 +108,17 @@ socket.on('contine', function (data) {
 
     var post = $('#'+id); post.addClass('online')
     var r = post.children('.text') 
+    
     post.children('.time').html(data.time)
-    var timer = setInterval(function() {
-        var sign = data.text.charAt(text-i)
+    var yo = ''
+    for (var i = text; i > -1; i--) {
+       var sign = data.text.charAt(text-i)
         if (sign == '¶') {sign = '<br>'} 
-        r.html(r.html()+sign)
-        i--;
-        if (i == -1) clearInterval(timer);
-    },  1000 / i);
-    // вот еще заметил эта штука глючит, наверно в неактивном акне 
-    // интервалы накапливаются, нужно переписать, с просони посмотрю,
-    // не обращай внимания
+        yo = yo.concat('<span class="s'+Math.floor(10/(text+1)*(i+1))+' s">'+sign+'</span>')
+    }
+    r.removeClass('wrap_s').html(r.html().replace(/(<span[^>]*>)(.*?)(<\/span>)/ig, "$2")+yo)
+    setTimeout(function(){r.addClass('wrap_s')},1)
+
 });
 
 

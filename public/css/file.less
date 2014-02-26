@@ -40,10 +40,12 @@ h1 {text-align: center; font: 50px/80px Arial; padding: 30px 0 10px;}
 	top: 47px;
 	right: 24px;
 }
-.s {background: url(../img/bg.jpg); background-size: cover;}
-.s #perception_stream {opacity: 0.2;}
-.s #subscribe.ready:after {content: '...and press enter';}
-.s #subscribe h3 {top: -5px; right: 15px; font-size: 10px}
+.mailived {background: url(../img/bg.jpg); background-size: cover;}
+.mailived #new {visibility: hidden;}
+.mailived .post {border: none; color: #fff; text-shadow: 3px 3px 3px #000000;}
+.mailived .time, .mailived .author {display: none;}
+.mailived #subscribe.ready:after {content: '...and press enter';}
+.mailived #subscribe h3 {top: -5px; right: 15px; font-size: 10px}
 #subscribe.hide {width: 0px; padding: 20px 0; overflow: hidden;}
 #subscribe.hide h3 {display: none;}
 #subscribe.hide:after {display: none;}
@@ -53,6 +55,20 @@ h1 {text-align: center; font: 50px/80px Arial; padding: 30px 0 10px;}
 	display: none;
 }
 
+
+
+.s {opacity: 0}
+.wrap_s .s {opacity: 1}
+.s10 {transition:opacity 0.1s;}
+.s9 {transition:opacity 0.2s;}
+.s8 {transition:opacity 0.3s;}
+.s7 {transition:opacity 0.4s;}
+.s6 {transition:opacity 0.5s;}
+.s5 {transition:opacity 0.6s;}
+.s4 {transition:opacity 0.7s;}
+.s3 {transition:opacity 0.8s;}
+.s2 {transition:opacity 0.9s;}
+.s1 {transition:opacity 1s;}
 
 #perception_stream {
 	padding: 20px;
@@ -93,11 +109,17 @@ h1 {text-align: center; font: 50px/80px Arial; padding: 30px 0 10px;}
 
 
 #online {
-	position: absolute;
-	bottom: 15px;
-	right: 15px;
+	position: fixed;
+	top: 30px;
+	left: 15px;
 	text-align: center;
 	line-height: 30px;
 }
 
 #end {display: none;}
+
+#raskladka {
+	position: fixed;
+	bottom: 15px;
+	right: 15px;
+}
