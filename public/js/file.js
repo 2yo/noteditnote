@@ -111,14 +111,14 @@ socket.on('contine', function (data) {
     
     post.children('.time').html(data.time)
     var yo = ''
-    for (var i = text; i > -1; i--) {
+    for (var i = text; i > 0; i--) {
        var sign = data.text.charAt(text-i)
         if (sign == '¶') {sign = '<br>'} 
-        yo = yo.concat('<span class="s'+Math.floor(10/(text+1)*(i+1))+' s">'+sign+'</span>')
+        yo = yo.concat('<span class="s'+Math.floor(20/(text+1)*(i))+' s">'+sign+'</span>')
     }
     r.removeClass('wrap_s').html(r.html().replace(/(<span[^>]*>)(.*?)(<\/span>)/ig, "$2")+yo)
-    setTimeout(function(){r.addClass('wrap_s')},1)
-
+    setTimeout(function(){r.addClass('wrap_s')},10)
+    // все равно не красиво
 });
 
 

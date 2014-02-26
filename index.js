@@ -8,6 +8,8 @@ var databaseUrl = "mongodb://127.0.0.1:27017/noteditnote";
 var collections = ["mails", "posts"]
 var db = require("mongojs").connect(databaseUrl, collections);
 
+
+
 app.configure = function configure(nconf, next) {
     // Async method run on startup.
     next(null);

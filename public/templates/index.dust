@@ -37,7 +37,7 @@
 	{#posts}
 		<div class="post" id="{id}">
 			<div class="time">{time}</div>
-			{text|s} 
+			<div class="text">{text|s}</div> 
 			<span class="author">{name}</span>
 		</div>
 	{/posts}
