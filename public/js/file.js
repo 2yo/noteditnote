@@ -26,7 +26,7 @@ function testmail(){
         subscribe.removeClass('ready')
     )
 }
-//ок, я не буду этого делать
+setInterval(testmail, 1000)
 
 // отправляем мыло
 subscribe.on('submit', function(){
@@ -77,7 +77,7 @@ input.focus().on('keydown', function(e){
 
 // делам клик на боди
 body.on('click', function(){
-    body.removeClass('.mailived')
+    body.removeClass('mailived')
     input.focus()
 });
 
