@@ -16,7 +16,7 @@ var mail = $('#mail')
 var regexp = /([\w\-]+\@[\w\-]+\.[\w\-]+)/
 
 subscribe.on('click', function(){mail.focus(); return false}); // так на на body у нас висит click 
-mail.on('focus', function(){body.addClass('s'); return false}); // добавляем красоту
+mail.on('focus', function(){body.addClass('mailived'); return false}); // добавляем красоту
 
 // постоянно проверяем значение. Ну а как еще?
 function testmail(){
