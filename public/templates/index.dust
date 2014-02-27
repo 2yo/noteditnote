@@ -8,20 +8,9 @@
 		<input type="text" placeholder="enter email and press enter" 
 			id="mail" name="email" x-autocompletetype="email">
 	</form>
-	<!--<div id="thanks">
-		<span class='st_googleplus_large' displayText='Google +'></span>
-		<span class='st_evernote_large' displayText='Evernote'></span>
-		<span class='st_livejournal_large' displayText='LiveJournal'></span>
-		<span class='st_facebook_large' displayText='Facebook'></span>
-		<span class='st_email_large' displayText='Email'></span>
-		<span class='st_vkontakte_large' displayText='Vkontakte'></span>
-		<span class='st_twitter_large' displayText='Tweet'></span>
-		<span class='st_delicious_large' displayText='Delicious'></span>
-		<span class='st_pinterest_large' displayText='Pinterest'></span>
-		<script type="text/javascript">var switchTo5x=true;</script>
-		<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-		<script type="text/javascript">stLight.options({publisher: "cfd88e61-e396-4e8a-96fa-61ae5759ea32", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
-	</div>-->
+	<div id="thanks">
+		Thanks, don't forget to shere this site in social network
+	</div>
 
 
 	<div id="perception_stream">
@@ -48,13 +37,7 @@
 	<span id="online">
 		
 	</span>
-	<div id="user">
-		<h1>egakrakenjs</h1>
-		<a href="#">feed</a>
-		<a href="#">frends</a>
-		<a href="#">statistics</a>
-		<!--<a href="#">follow</a>-->
-	</div>
+	
 	<span id="raskladka">↓ keyboard layout</span>
 
 {/body}
