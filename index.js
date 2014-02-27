@@ -61,13 +61,13 @@ if (require.main === module) {
 
             db.posts.findOne({id: ID}, function(err, posts) {
               if( err || !posts) {
-                db.posts.save({text: data.replace('¶','<br>'), name: 'anonim', time: date, id: ID}, function(err, saved) {
+                db.posts.save({text: data.replace(/¶/g,'<br>'), name: 'anonim', time: date, id: ID}, function(err, saved) {
                   if( err || !saved ) console.log("post save error");
                 });
               }
 
             else {
-               db.posts.update({id: ID}, {$set: {text: posts.text+data.replace('¶','<br>')}}, function(err, saved) {
+               db.posts.update({id: ID}, {$set: {text: posts.text+data.replace(/¶/g,'<br>')}}, function(err, saved) {
                   if( err || !saved ) console.log("post update error");
                 });
              }

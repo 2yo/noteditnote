@@ -48,6 +48,13 @@
 	<span id="online">
 		
 	</span>
+	<div id="user">
+		<h1>egakrakenjs</h1>
+		<a href="#">feed</a>
+		<a href="#">frends</a>
+		<a href="#">statistics</a>
+		<!--<a href="#">follow</a>-->
+	</div>
 	<span id="raskladka">↓ keyboard layout</span>
 
 {/body}
