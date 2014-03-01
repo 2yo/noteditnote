@@ -1,6 +1,6 @@
 * {margin: 0; padding: 0;} 
 body, html {height: 100%;}
-body {font-family: Arial; color: #252525; background: url(../img/bg.jpg) no-repeat -9999px -9999px;}
+body {font-family: Arial; color: #252525;}
 
 h1 {text-align: center; font: 50px/80px Arial; padding: 30px 0 10px;}
 
@@ -17,12 +17,11 @@ h1 {text-align: center; font: 50px/80px Arial; padding: 30px 0 10px;}
 }
 #subscribe h3 {
 	font: 18px/30px Arial;
-	padding-bottom: 25px;
-	text-align: center;
-	position: absolute;
-	top: -30px;
-	right: 0;
-	transition:all .5s;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: -30px;
+    transition: all 0.5s ease 0s;
 }
 #subscribe input {
 	height: 50px;
@@ -32,21 +31,14 @@ h1 {text-align: center; font: 50px/80px Arial; padding: 30px 0 10px;}
 	transition:all .5s;
 }
 #subscribe.ready {background: #90EE90}
-#subscribe.ready:after {
-	content: '...oh, click me';
-	position: absolute;
-	color: #777;
-	font-size: 18px;
-	top: 47px;
-	right: 24px;
-}
-.mailived {background: url(../img/bg.jpg); background-size: cover;}
+
+.mailived {background: url(../img/star-pibl.gif);}
 .mailived #new {visibility: hidden;}
 .mailived .post {border: none; color: #fff; text-shadow: 3px 3px 3px #000000;}
 .mailived .time, .mailived .author {display: none;}
-.mailived #subscribe.ready:after {content: '...and press enter';}
-.mailived #subscribe h3 {top: -5px; right: 15px; font-size: 10px}
+
 #subscribe.hide {width: 0px; padding: 20px 0; overflow: hidden;}
+
 #subscribe.hide h3 {display: none;}
 #subscribe.hide:after {display: none;}
 #thanks {position: absolute; top: 155px; left: 50%; margin-left: -170px; width: 340px;}
@@ -59,7 +51,7 @@ h1 {text-align: center; font: 50px/80px Arial; padding: 30px 0 10px;}
 
 .s {opacity: 0; transition-timing-function: cubic-bezier(1, 0, 1, 0), linear;}
 .wrap_s .s {opacity: 1}
-.s20 {transition:opacity 0.0s;}
+.s20 {transition:opacity 0s;}
 .s19 {transition:opacity 0.1s;}
 .s18 {transition:opacity 0.2s;}
 .s17 {transition:opacity 0.3s;}
@@ -103,13 +95,15 @@ h1 {text-align: center; font: 50px/80px Arial; padding: 30px 0 10px;}
 	border: none;
 	font: 16px Arial;
 	background: none;
-	width: 15px;
+	width: 60px;
+	color: #777;
 	outline: none;
 }
 .moz #input {
 	position: relative;
 	left: -1px;
 }
+#edit {background: #9cf}
 
 
 .author {float: right;}

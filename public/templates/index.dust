@@ -1,23 +1,13 @@
 {>"layouts/master" /}
 
 {<body}
-    <h1>{@pre type="content" key="greeting"/}</h1>
- 
-	<form id="subscribe">
-		<h3>subscribe beta news!</h3>
-		<input type="text" placeholder="enter email and press enter" 
-			id="mail" name="email" x-autocompletetype="email">
-	</form>
-	<div id="thanks">
-		Thanks, don't forget to shere this site in social network
-	</div>
-
 
 	<div id="perception_stream">
 
 	<div class="post" id="new">
 		<div class="time"></div>
 		<span id="text"></span>
+		<span id="edit"></span>
 		<input type="text" id="input">
 		<span class="author">anonim</span>
 	</div>
@@ -26,7 +16,7 @@
 	{#posts}
 		<div class="post" id="{id}">
 			<div class="time">{time}</div>
-			<span class="text">{text|s}</span> 
+			<span class="text">{text|s}</span>
 			<span class="author">{name}</span>
 		</div>
 	{/posts}

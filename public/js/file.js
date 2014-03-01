@@ -18,16 +18,6 @@ var regexp = /([\w\-]+\@[\w\-]+\.[\w\-]+)/
 subscribe.on('click', function(){mail.focus(); return false}); // так на на body у нас висит click 
 mail.on('focus', function(){body.addClass('mailived'); return false}); // добавляем красоту
 
-// постоянно проверяем значение. Ну а как еще?
-function testmail(){
-    if(regexp.test(mail.val())){
-        subscribe.addClass('ready')
-    } else (
-        subscribe.removeClass('ready')
-    )
-}
-setInterval(testmail, 1000)
-
 // отправляем мыло
 subscribe.on('submit', function(){
     if(regexp.test(mail.val())){
@@ -55,25 +45,47 @@ socket.on('bum2', function () {
 // делаем notedit форму      
 var input = $('#input') // инпут
 var text = $('#text') // введенный текст
+var edit = $('#edit') // текст открытый для редактирования
+
 var send = '' // временная переменная, раз в секунду отсылаем и очищаем
-var flag = 0 // защита от автоповтора
+var oldval = ''
 
-
-input.focus().on('keydown', function(e){
-    if(flag < 2) {
-        var val = input.val()
-        $('#new').addClass('online').children('.time').text(new Date().getTime())
-        if(val.length < 2){
-            text.html(text.html()+val)
-            send = send + val
-        }
-        if(e.keyCode==13){
-            text.html(text.html()+'<br>')
-            send = send + '¶'
-        }
+input.val('').focus().on('keydown', function(e){
+    if(e.keyCode==13){
+        text.html(text.html()+edit.text()+'<br>');
+        edit.text('')
+        send = send + '¶'
         input.val('')
-    } else{return false} flag++
-}).on('keyup', function(){flag = 0});
+    }
+    if(e.keyCode==8){
+        if (edit.text().length != 0) {
+            edit.text(edit.text().substring(0, edit.text().length-1)) 
+            if(send != '' && send != '·' && send != '··' && send != '···' && send != '····') {
+                send = send.substring(0, send.length-1) 
+            } else {send = send + '·'}
+        }
+    }
+});
+
+
+var z = document.getElementById('input')
+
+z.addEventListener('input', function(){
+    var val = z.value
+    $('#new').addClass('online').children('.time').text(new Date().getTime())
+        
+    if(val.length < 2) {
+        edit.text(edit.text()+val)
+        if(edit.text().length > 5)
+        {
+            text.html(text.html()+edit.text().charAt(0))
+            edit.text(edit.text().substr(1))
+        }
+        send = send + z.value
+        z.value = ''
+        //send = send + val
+    } else {alert("Вы получили ачивку: Самый умный");  z.value = ''}
+}, false);
 
 // делам клик на боди
 body.on('click', function(){
@@ -96,33 +108,49 @@ function sendtext(){
 }
 setInterval(sendtext, 1000)
 
-
+// получаем текст
 socket.on('contine', function (data) {
-    var id = data.id
-    var text = data.text.length;
+    var id = data.id // дата поста
+    var deltext = data.text.lastIndexOf('·') // сколько символов удаляем
+    if(deltext != -1) {
+        var text = data.text.slice(0,-deltext-1)
+    } else {
+        var text = data.text
+    }
+    
+    
+
+    // если сообщения новое - создаем блок
     if(!document.getElementById(id)) {
         $("<div></div>").addClass('post online').attr('id', id)
         .html('<div class="time">'+data.time+'</div><span class="text"></span><span class="author">anonim</span>')
         .insertAfter("#new")
     }
 
-    var post = $('#'+id); post.addClass('online')
+    var post = $('#'+id); 
+    post.addClass('online'); // ставим класс online
+    post.children('.time').html(data.time) // обновляем дату
     var r = post.children('.text') 
-    
-    post.children('.time').html(data.time)
+    var oldtext = r.html().replace(/(<span[^>]*>)(.*?)(<\/span>)/ig, "$2")
+    var length = text.length;
     var yo = ''
-    for (var i = text; i > 0; i--) {
-       var sign = data.text.charAt(text-i)
+    for (var i = length; i > 0; i--) {
+       var sign = text.charAt(length-i)
         if (sign == '¶') {sign = '<br>'} 
-        yo = yo.concat('<span class="s'+Math.floor(20/(text+1)*(i))+' s">'+sign+'</span>')
+        yo = yo.concat('<span class="s'+Math.floor(20/(length+1)*(i))+' s">'+sign+'</span>')
     }
-    r.removeClass('wrap_s').html(r.html().replace(/(<span[^>]*>)(.*?)(<\/span>)/ig, "$2")+yo)
+    if(deltext != -1) {
+        r.removeClass('wrap_s').html(oldtext.slice(0,-deltext-1)+yo)
+    } else {
+        r.removeClass('wrap_s').html(oldtext+yo)
+    }
+    console.log(deltext)
     setTimeout(function(){r.addClass('wrap_s')},10)
-    // все равно не красиво
+    // обязательно переписать
 });
 
 
-// кто то пишет явную хуйню
+// кто то слишком быстро пишет
 socket.on('bum', function () {
     alert('Do not break, I did it all night')
     $('#new').remove()

@@ -67,7 +67,11 @@ if (require.main === module) {
               }
 
             else {
-               db.posts.update({id: ID}, {$set: {text: posts.text+data.replace(/¶/g,'<br>')}}, function(err, saved) {
+               var deltext = -data.lastIndexOf('·')
+               if(deltext == 1) {
+                  deltext = 10000000
+               }
+               db.posts.update({id: ID}, {$set: {text: posts.text.slice(0,deltext-1)+data.replace(/·/g,'').replace(/¶/g,'<br>')}}, function(err, saved) {
                   if( err || !saved ) console.log("post update error");
                 });
              }

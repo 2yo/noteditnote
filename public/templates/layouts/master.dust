@@ -10,6 +10,16 @@
 	    <script src="js/file.js"></script>
 </head>
 <body id="wrapper">
+	<h1>{@pre type="content" key="greeting"/}</h1>
+ 
+	<form id="subscribe">
+		<h3>subscribe beta news!</h3>
+		<input type="text" placeholder="enter email and press enter" 
+			id="mail" name="email" x-autocompletetype="email">
+	</form>
+	<div id="thanks">
+		Thanks, don't forget to shere this site in social network
+	</div>
 
     {+body /}
 

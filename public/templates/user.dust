@@ -1,0 +1,26 @@
+{>"layouts/master" /}
+
+{<body}
+    <h1>{@pre type="content" key="greeting"/}</h1>
+ 
+	<form id="subscribe">
+		<h3>subscribe beta news!</h3>
+		<input type="text" placeholder="enter email and press enter" 
+			id="mail" name="email" x-autocompletetype="email">
+	</form>
+	
+
+	<h1>username </h1>
+	<a href="#">follow</a>
+	<h2><a href="#">19 notes</a>, <a href="#">6 marks</a>, <a href="#">20 comments</a></h2>
+
+	<div id="perception_stream">
+		{#posts}
+			<div class="post" id="{id}">
+				<div class="time">{time}</div>
+				<div class="text">{text|s}</div> 
+				<span class="author">{name}</span>
+			</div>
+		{/posts}
+	</div>
+{/body}
