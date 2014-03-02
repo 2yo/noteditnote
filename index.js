@@ -49,19 +49,19 @@ if(require.main === module) {
               var deltext = -data.lastIndexOf('·')
               if(deltext == 1) {
                 deltext = 1000000
-              } else {
-                db.posts.findOne({id: ID}, function (err, posts) {
-                  if(posts.text.slice(0, deltext - 1) == '') {
-                    db.posts.remove({id: ID});
-                    socket.broadcast.emit('delite', {id: ID});
-                  } else {
-                    db.posts.update({id: ID}, {
-                      $set: {text: posts.text.slice(0, deltext - 1) + data.replace(/·/g, '').replace(/¶/g, '<br>')}}, function (err, saved) {
-                      if(err || !saved) console.log("post update error");
-                    });
-                  }
-                });
-              }
+              } 
+              db.posts.findOne({id: ID}, function (err, posts) {
+                if(posts.text.slice(0, deltext - 1) == '') {
+                  db.posts.remove({id: ID});
+                  socket.broadcast.emit('delite', {id: ID});
+                } else {
+                  db.posts.update({id: ID}, {
+                    $set: {text: posts.text.slice(0, deltext - 1) + data.replace(/·/g, '').replace(/¶/g, '<br>')}}, function (err, saved) {
+                    if(err || !saved) console.log("post update error");
+                  });
+                }
+              });
+              
             }
           });
         }
