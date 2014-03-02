@@ -23,18 +23,19 @@ h1 {text-align: center; font: 50px/80px Arial; padding: 30px 0 10px;}
     top: -30px;
     transition: all 0.5s ease 0s;
 }
-#subscribe input {
+#mail {
 	height: 50px;
 	font-size: 30px;
 	width: 100%;
 	text-align: center;
+	border:1px solid #ccc;
 	transition:all .5s;
 }
-#subscribe.ready {background: #90EE90}
+#mail:valid {box-shadow:0 0 5px #0f0}
 
-.mailived {background: url(../img/star-pibl.gif);}
+.mailived {background: url(../img/star-pibl.gif); color: #fff;}
 .mailived #new {visibility: hidden;}
-.mailived .post {border: none; color: #fff; text-shadow: 3px 3px 3px #000000;}
+.mailived .post {border: none; text-shadow: 3px 3px 3px #000000;}
 .mailived .time, .mailived .author {display: none;}
 
 #subscribe.hide {width: 0px; padding: 20px 0; overflow: hidden;}
@@ -43,9 +44,7 @@ h1 {text-align: center; font: 50px/80px Arial; padding: 30px 0 10px;}
 #subscribe.hide:after {display: none;}
 #thanks {position: absolute; top: 155px; left: 50%; margin-left: -170px; width: 340px;}
 
-#subscribe input::-ms-clear {
-	display: none;
-}
+
 
 
 
@@ -95,7 +94,7 @@ h1 {text-align: center; font: 50px/80px Arial; padding: 30px 0 10px;}
 	border: none;
 	font: 16px Arial;
 	background: none;
-	width: 60px;
+	width: 15px;
 	color: #777;
 	outline: none;
 }
@@ -104,6 +103,13 @@ h1 {text-align: center; font: 50px/80px Arial; padding: 30px 0 10px;}
 	left: -1px;
 }
 #edit {background: #9cf}
+.del {
+	border-bottom: 1px dashed #FF0000;
+    color: #FF0000;
+    cursor: pointer;
+    position: absolute;
+    right: -50px;
+}
 
 
 .author {float: right;}

@@ -14,8 +14,8 @@
  
 	<form id="subscribe">
 		<h3>subscribe beta news!</h3>
-		<input type="text" placeholder="enter email and press enter" 
-			id="mail" name="email" x-autocompletetype="email">
+		<input type="email" placeholder="enter email and press enter" 
+			id="mail" name="email" x-autocompletetype="email" required>
 	</form>
 	<div id="thanks">
 		Thanks, don't forget to shere this site in social network

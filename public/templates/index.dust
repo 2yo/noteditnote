@@ -10,6 +10,7 @@
 		<span id="edit"></span>
 		<input type="text" id="input">
 		<span class="author">anonim</span>
+		<a class="del">in bin</a>
 	</div>
 	
 	
