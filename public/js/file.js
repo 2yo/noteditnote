@@ -156,6 +156,9 @@ socket.on('bum', function () {
     $('#new').remove()
 });
 
+socket.on('delite', function (del) {
+    $('#'+del.id).remove()
+});
 // кто то подключился
 socket.on('online', function (online) {
     $('#online').html('<h2>online</h2><span>'+online+'</span>')
@@ -164,6 +167,12 @@ socket.on('online', function (online) {
 // кто то отключился
 socket.on('done', function (id) {
     $('#'+id).removeClass('online')
+});
+
+// удлаяем пост
+$('.del').on('click', function(){
+    socket.emit('delite');
+    $('#new').remove()
 });
 
 
