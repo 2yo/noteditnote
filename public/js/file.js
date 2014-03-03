@@ -65,6 +65,7 @@ input.val('').focus().on('keydown', function(e){
             } else {send = send + '·'}
         }
     }
+    endAndStartTimer()
 });
 
 
@@ -76,16 +77,31 @@ z.addEventListener('input', function(){
         
     if(val.length < 2) {
         edit.text(edit.text()+val)
-        if(edit.text().length > 5)
+        if(edit.text().length > 3)
         {
             text.html(text.html()+edit.text().charAt(0))
             edit.text(edit.text().substr(1))
         }
         send = send + z.value
         z.value = ''
-        //send = send + val
+
+        endAndStartTimer()
+
     } else {alert("Вы получили ачивку: Самый умный");  z.value = ''}
 }, false);
+
+
+var endAndStartTimer = (function () {
+  var timer; 
+  return function () {
+    window.clearTimeout(timer);
+    timer = window.setTimeout(function(){
+        text.html(text.html()+edit.text());
+        edit.text('')
+    },1000); 
+  };
+})();
+
 
 // делам клик на боди
 body.on('click', function(){
